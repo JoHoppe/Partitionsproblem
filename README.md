@@ -1,0 +1,2 @@
+# Partitionsproblem
+Group Projeckt
