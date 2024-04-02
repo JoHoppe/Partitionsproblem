@@ -2,15 +2,17 @@
 import random
 
 
-class Solution:
+class Individual:
     def __str__(self):
-        return (f"Solution: initial_set={self.initial_set}, solution={self.solution}, total_sum={self.total_sum},"
-                f"partial_sum={self.partial_sum}, fitness={self.fitness}")
+        return (
+            f"Solution: initial_set={self.initial_set}, solution={self.solution}, total_sum={self.total_sum},"
+            f"partial_sum={self.partial_sum}, fitness={self.fitness}"
+        )
 
     # first implementation of the fitness function
     def calculate_fitness(self):
         if (self.partial_sum - self.total_sum / 2) == 0:
-            return 999
+            return 100
         fitness = 1 / (((abs(self.partial_sum - (self.total_sum / 2))) ** 3) * 100)
         return fitness
 
@@ -34,11 +36,11 @@ class Solution:
 
 
 def initialization(initial_set, amount_solutions):
-    return [Solution(initial_set) for _ in range(amount_solutions)]
+    return [Individual(initial_set) for _ in range(amount_solutions)]
 
 
 def mutate(solutions, mutation_factor=1):
-    # TODO: check if mutation from 1 to 1 should be possilbe, or to just flip values
+    # TODO: check if mutation from 1 to 1 should be possible, or to just flip values
     # chose a mutation_factor between 0 and length of the solution. we will then choose random positions of solution to
     # redraw the values,the amount based on the mutation_factor
     # we use range() plus len() to choose which positions of the solutions to change
@@ -76,8 +78,11 @@ def random_crossover(parent_solutions, num_children):
         parent2 = random.choice(parent_solutions)
 
         # Perform random crossover
-        child = Solution(initial_set=parent1.initial_set)
-        child.solution = [random.choice(gene_pair) for gene_pair in zip(parent1.solution, parent2.solution)]
+        child = Individual(initial_set=parent1.initial_set)
+        child.solution = [
+            random.choice(gene_pair)
+            for gene_pair in zip(parent1.solution, parent2.solution)
+        ]
 
         children.append(child)
 
@@ -95,6 +100,8 @@ def best_fitness_selection(solutions, output_amount):
 
 def break_stagnation(population, new_population_output=20):
     new_population = initialization(population[0].initial_set, new_population_output)
-    population = population[:-new_population_output]  # Remove the last new_population_output elements
+    population = population[
+        :-new_population_output
+    ]  # Remove the last new_population_output elements
     population.extend(new_population)  # Append the new_population to the population
     return population
