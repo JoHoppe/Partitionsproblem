@@ -91,3 +91,10 @@ def sort_by_fitness(solutions):
 
 def best_fitness_selection(solutions, output_amount):
     return sort_by_fitness(solutions)[:output_amount]
+
+
+def break_stagnation(population, new_population_output=20):
+    new_population = initialization(population[0].initial_set, new_population_output)
+    population = population[:-new_population_output]  # Remove the last new_population_output elements
+    population.extend(new_population)  # Append the new_population to the population
+    return population
