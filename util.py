@@ -1,4 +1,5 @@
 import random
+from dataclasses import dataclass
 from matplotlib import pyplot as plt
 
 
@@ -26,8 +27,7 @@ def plot_generations_needed(results):
             result["solution"].fitness
             for result in results
             if result["generations_needed"] == gen
-        )
-             / generation_counts[gen]
+        ) / generation_counts[gen]
         for gen in set(generations_needed)
     }
 
@@ -62,5 +62,50 @@ def plot_generations_needed(results):
     plt.show()
 
 
-def random_set(set_size, min, max):
-    return [random.randint(min, max) for i in range(set_size)]
+def random_set(set_size, min_value, max_value):
+    return [random.randint(min_value, max_value) for _ in range(set_size)]
+
+
+class SetStorage:
+    filename = "set_storage.yaml"
+
+    def load_set(self, number):
+        pass
+
+    def show_all(self):
+        pass
+
+    def show_specific_config(self, number):
+
+        def safe_set(self, set_to_save):
+            pass
+
+
+class ConfigStorage:
+    filename = "config_storage.yaml"
+
+    def load_config(self, number):
+        pass
+
+    def show_all(self):
+        pass
+
+    def show_specific_config(self, number):
+        pass
+
+    def save_config(self, config_to_save):
+        pass
+
+
+@dataclass
+class RunConfig:
+    generation_size: int
+    amount_generations: int
+    fitness_selection: int
+    mutation_factor: int
+    stagnation_threshold: int
+    num_runs: int
+
+    def __str__(self):
+        pass
+

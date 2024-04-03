@@ -13,7 +13,7 @@ class Individual:
     def calculate_fitness(self):
         if (self.partial_sum - self.total_sum / 2) == 0:
             return 100
-        fitness = 1 / (((abs(self.partial_sum - (self.total_sum / 2))) ** 3) * 100)
+        fitness = (abs(self.partial_sum - (self.total_sum / 2)))
         return fitness
 
     def calculate_partial_sum(self):
@@ -90,7 +90,7 @@ def random_crossover(parent_solutions, num_children):
 
 
 def sort_by_fitness(solutions):
-    sorted_list = sorted(solutions, key=lambda x: x.fitness, reverse=True)
+    sorted_list = sorted(solutions, key=lambda x: x.fitness, reverse=False)
     return sorted_list
 
 
@@ -101,7 +101,7 @@ def best_fitness_selection(solutions, output_amount):
 def break_stagnation(population, new_population_output=20):
     new_population = initialization(population[0].initial_set, new_population_output)
     population = population[
-        :-new_population_output
-    ]  # Remove the last new_population_output elements
+                 :-new_population_output
+                 ]  # Remove the last new_population_output elements
     population.extend(new_population)  # Append the new_population to the population
     return population

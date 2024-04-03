@@ -3,11 +3,12 @@ import util
 
 
 def main():
-    initial_set = util.random_set(100, 0, 400)
+    initial_set = util.random_set(100, 10, 400)
+    print(initial_set)
 
-    generation_size = 100
+    generation_size = 15
     amount_generations = 50
-    fitness_selection = 10
+    fitness_selection = 5
     mutation_factor = 1
     stagnation_threshold = 1
     num_runs = 10
