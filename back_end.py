@@ -40,7 +40,6 @@ def initialization(initial_set, amount_solutions):
 
 
 def mutate(solutions, mutation_factor=1):
-    # TODO: check if mutation from 1 to 1 should be possible, or to just flip values
     # chose a mutation_factor between 0 and length of the solution. we will then choose random positions of solution to
     # redraw the values,the amount based on the mutation_factor
     # we use range() plus len() to choose which positions of the solutions to change
