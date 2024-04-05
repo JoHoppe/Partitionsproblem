@@ -2,7 +2,7 @@ import back_end
 
 
 def run_evolutionary_algorithm(initial_set, amount_solutions, generations, fitness_selection=10, mutation_factor=4,
-                               stagnation_threshold=3, good_enough_number=5):
+                               stagnation_threshold=3, good_enough_number=2):
     # Initialize the population
     population = back_end.initialization(initial_set, amount_solutions)
     best_solution = back_end.sort_by_fitness(population)[0]  # Get the best solution from the sorted population
@@ -23,8 +23,7 @@ def run_evolutionary_algorithm(initial_set, amount_solutions, generations, fitne
         stagnation_tracker += 1
         # Select the best individuals fraction
         population = back_end.best_fitness_selection(population, fitness_selection)
-        print(f"Differenz: {abs(best_solution.partial_sum - (best_solution.total_sum / 2))};"
-              f"best Score: {best_solution.fitness}")
+        print(f"best Score: {best_solution.fitness}")
         # Apply mutation to the selected individuals
         population = back_end.mutate(population, mutation_factor=mutation_factor)
 
@@ -40,12 +39,13 @@ def run_evolutionary_algorithm(initial_set, amount_solutions, generations, fitne
 
 
 def run_algorithm_multiple_times(initial_set, generation_size, amount_generations, fitness_selection, mutation_factor,
-                                 stagnation_threshold, num_runs, ):
+                                 stagnation_threshold, num_runs, good_enough_number):
     results = []
 
     for _ in range(num_runs):
         result = run_evolutionary_algorithm(initial_set, generation_size, amount_generations, fitness_selection,
-                                            mutation_factor, stagnation_threshold, )
+                                            mutation_factor, stagnation_threshold,
+                                            good_enough_number)
         results.append(result)
 
     return results

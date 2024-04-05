@@ -12,16 +12,16 @@ def main():
     mutation_factor = 1
     stagnation_threshold = 1
     num_runs = 10
+    good_enough_number = 1
+    run_config = util.RunConfig(generation_size=generation_size, amount_generations=amount_generations,
+                                fitness_selection=fitness_selection, mutation_factor=mutation_factor,
+                                stagnation_threshold=stagnation_threshold, num_runs=num_runs, good_enough_number=good_enough_number)
+    util.save_config(run_config=run_config)
     # TODO: create a way to load and safe configs and initial sets
     # ToDO: mute_factor must be smaller then pop
-    results = algorithm.run_algorithm_multiple_times(
-        initial_set,
-        generation_size,
-        amount_generations,
-        fitness_selection,
-        mutation_factor,
-        stagnation_threshold,
-        num_runs,
+    run_config2 = util.load_config(1)
+    results = algorithm.run_algorithm_multiple_times(initial_set,
+        *run_config2.values()
     )
     util.plot_generations_needed(results)
 
