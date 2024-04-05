@@ -3,9 +3,11 @@ import util
 
 
 def main():
-    initial_set = util.random_set(100, 10, 400)
-    print(initial_set)
-    util.save_set(initial_set)
+    # initial_set = util.random_set(100, 10, 400)
+    # print(initial_set)
+    # util.save_set(initial_set)
+    print(util.get_all_configs())
+
     set_1 = util.load_set(1)
     # generation_size = 15
     # amount_generations = 50

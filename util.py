@@ -91,10 +91,6 @@ def save_set(new_set: List[int]) -> None:
         yaml.dump(sets, outfile, default_flow_style=False, allow_unicode=True)
 
 
-def show_all() -> List[List[int]]:
-    return load_sets()
-
-
 ConfigStorage = "config_storage.yaml"
 
 
