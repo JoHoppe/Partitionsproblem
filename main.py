@@ -6,7 +6,7 @@ def run_evolutionary_algorithm(initial_set, amount_solutions, generations, fitne
     # Evolve the population for the specified number of generations
     for _ in range(generations):
         # Select the best individuals from the population
-        population = back_end.best_fitness_selection(population, 10)
+        population = back_end.best_fitness_selection(population, fitness_selection)
 
         # Apply mutation to the selected individuals
         population = back_end.mutate(population, mutation_factor=4)
