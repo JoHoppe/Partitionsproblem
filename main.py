@@ -16,7 +16,7 @@ def main():
     # mutation_factor = 1
     # stagnation_threshold = 1
     # num_runs = 10
-    good_enough_number = 1
+    # good_enough_number = 1
     # run_config = util.RunConfig(generation_size=generation_size, amount_generations=amount_generations,
     #                            fitness_selection=fitness_selection, mutation_factor=mutation_factor,
     #                           stagnation_threshold=stagnation_threshold, num_runs=num_runs, good_enough_number=good_enough_number)
