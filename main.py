@@ -4,7 +4,7 @@ import back_end
 
 
 def main():
-    # One can create a new configuration one load one of the previously used once. 
+    # One can create a new configuration one load one of the previously used once.
     initial_set = util.random_set(100, 10, 400)
     print(initial_set)
     util.save_set(initial_set)
