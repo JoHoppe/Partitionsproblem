@@ -12,4 +12,12 @@ recherche bzgl.:
 Todos:
 Basic Python Structure
 Dokumentation 
-Evtl Spandl Email wegen Testscenario
+
+## Deadline 10.04
+- Code Fertig
+- Code Dokumentation
+- Jupyter Notebook
+
+
+## Deadline 17.04
+- letzter Schliff
