@@ -46,10 +46,8 @@ def mutate(solutions, mutation_factor=1):
     for solution in solutions:
         mutations = random.sample(range(len(solution.solution)), mutation_factor)
         for i in mutations:
-            if solution.solution[i] == 1:
-                solution.solution[i] = 0
-            else:
-                solution.solution[i] = 1
+            solution.solution[i] == abs(solution.solution[i]-1)
+
             # ensure mutations change the solution
             # solution.solution[i] = random.choice([0, 1])
     return solutions
